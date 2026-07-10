@@ -1,5 +1,7 @@
 {
   "name": "github-amp-nextyml-check",
+  "author": "Shripal Mehta",
+  "description": "CI Flow for Next JS for Security Check",
   "version": "0.1.0",
   "private": true,
   "scripts": {
