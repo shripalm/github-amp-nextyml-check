@@ -23,7 +23,7 @@ jobs:
         run: npm install
 
       - name: Run ESLint
-        run: eslint
+        run: npx next eslint
 
       - name: Run npm audit
         run: npm audit --audit-level=high
