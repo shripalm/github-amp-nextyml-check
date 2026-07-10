@@ -10,8 +10,8 @@ frontend:
         - chmod +x gitleaks
         - sudo mv gitleaks /usr/local/bin/
         - gitleaks detect --verbose
-        - pip install semgrep
-        - semgrep scan --config auto --verbose
+        - pip install semgrep==1.81.0
+        - SEMGREP_FORCE_PYSEMGREP=true semgrep scan --config auto --verbose
     build:
       commands:
         - npm run build
