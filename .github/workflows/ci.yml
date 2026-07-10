@@ -23,22 +23,20 @@ jobs:
         run: npm install
 
       - name: Run ESLint
-        run: npm run lint
+        run: eslint
 
       - name: Run npm audit
         run: npm audit --audit-level=high
 
-      - name: Install and run Gitleaks
-        run: |
-          curl -sSfL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks_8.18.4_linux_x64.tar.gz | tar -xz
-          chmod +x gitleaks
-          sudo mv gitleaks /usr/local/bin/
-          gitleaks detect --verbose
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install and run Semgrep
-        run: |
-          pip install semgrep
-          semgrep scan --config auto --verbose
+      - name: Run Semgrep
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: auto
 
       - name: Build
         run: npm run build
